@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using RefactoringToPatterns.Strategy.Common;
 using RefactoringToPatterns.Strategy.Step0;
 
@@ -15,20 +14,18 @@ namespace RefactoringToPatterns.Strategy.Test.Step0
         [TestCase(2, 0.5)]
         [TestCase(3, 0.25)]
         [TestCase(4, 0)]
-        public void It_should_return_correct_value_for_exam_without_non_meritorical_costs(
+        public void It_should_return_correct_value_for_exam_without_side_costs(
             int aproachNumber,
             decimal expectedPriceMultiplicator)
         {
             // Given
-            var expectedResult = BasePrice * expectedPriceMultiplicator;
-
             var exam = new WishListItem(
                 WishListItemType.Exam,
                 BasePrice,
                 VendorName,
-                aproachNumber,
-                new NonMeritoricalCosts(),
-                new Dictionary<string, decimal>());
+                approachNumber: aproachNumber);
+
+            var expectedResult = BasePrice * expectedPriceMultiplicator;
 
             // When
             var result = exam.CalculateCost();
@@ -41,7 +38,7 @@ namespace RefactoringToPatterns.Strategy.Test.Step0
         [TestCase(2, 0.5)]
         [TestCase(3, 0.25)]
         [TestCase(4, 0)]
-        public void It_should_return_correct_value_for_exam_with_non_meritorical_costs(
+        public void It_should_return_correct_value_for_exam_with_side_costs(
             int aproachNumber,
             decimal expectedPriceMultiplicator)
         {
@@ -49,7 +46,7 @@ namespace RefactoringToPatterns.Strategy.Test.Step0
             const decimal accommodationCost = 200;
             const decimal transportCost = 300;
 
-            var nonMeritoricalCosts = new NonMeritoricalCosts
+            var sideCosts = new SideCosts
             {
                 AccommodationCost = accommodationCost,
                 DailyAllowanceCost = transportCost,
@@ -57,16 +54,15 @@ namespace RefactoringToPatterns.Strategy.Test.Step0
                 IncludeDailyAllowanceCost = true
             };
 
-            var expectedExamPrice = BasePrice * expectedPriceMultiplicator;
-            var expectedTotalPrice = expectedExamPrice + accommodationCost + transportCost;
-
             var exam = new WishListItem(
                 WishListItemType.Exam,
                 BasePrice,
                 VendorName,
-                aproachNumber,
-                nonMeritoricalCosts,
-                new Dictionary<string, decimal>());
+                approachNumber: aproachNumber,
+                sideCosts: sideCosts);
+
+            var expectedExamPrice = BasePrice * expectedPriceMultiplicator;
+            var expectedTotalPrice = expectedExamPrice + accommodationCost + transportCost;
 
             // When
             var result = exam.CalculateCost();

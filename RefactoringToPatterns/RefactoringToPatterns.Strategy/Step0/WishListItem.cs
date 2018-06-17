@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RefactoringToPatterns.Strategy.Common;
 
 namespace RefactoringToPatterns.Strategy.Step0
@@ -6,8 +7,11 @@ namespace RefactoringToPatterns.Strategy.Step0
     public class WishListItem
     {
         private readonly int _approachNumber;
+        private readonly DateTime? _endDate;
         private readonly decimal _itemCost;
-        private readonly NonMeritoricalCosts _nonMeritoricalCosts;
+        private readonly LocationType _location;
+        private readonly SideCosts _sideCosts;
+        private readonly DateTime? _startDate;
         private readonly string _vendorName;
         private readonly IDictionary<string, decimal> _vendorsWithDiscounts;
         private readonly WishListItemType _wishListItemType;
@@ -15,16 +19,22 @@ namespace RefactoringToPatterns.Strategy.Step0
         public WishListItem(
             WishListItemType wishListItemType,
             decimal itemCost,
-            string vendorName,
+            string vendorName = null,
+            LocationType location = LocationType.Local,
             int approachNumber = 0,
-            NonMeritoricalCosts nonMeritoricalCosts = null,
+            DateTime? startDate = null,
+            DateTime? endDate = null,
+            SideCosts sideCosts = null,
             IDictionary<string, decimal> vendorNamesWithDiscounts = null)
         {
             _wishListItemType = wishListItemType;
-            _approachNumber = approachNumber;
             _itemCost = itemCost;
             _vendorName = vendorName;
-            _nonMeritoricalCosts = nonMeritoricalCosts ?? new NonMeritoricalCosts();
+            _location = location;
+            _approachNumber = approachNumber;
+            _startDate = startDate;
+            _endDate = endDate;
+            _sideCosts = sideCosts ?? new SideCosts();
             _vendorsWithDiscounts = vendorNamesWithDiscounts ?? new Dictionary<string, decimal>();
         }
 
@@ -39,6 +49,16 @@ namespace RefactoringToPatterns.Strategy.Step0
                 {
                     var discountAmount = totalCost * _vendorsWithDiscounts[_vendorName];
                     totalCost -= discountAmount;
+                }
+            }
+
+            if (_wishListItemType == WishListItemType.ELearningLicense)
+            {
+                var duration = _endDate - _startDate;
+
+                if (duration.HasValue && duration.Value.Days > 180)
+                {
+                    totalCost *= 0.8m;
                 }
             }
 
@@ -58,23 +78,31 @@ namespace RefactoringToPatterns.Strategy.Step0
                 }
             }
 
+            if (_wishListItemType == WishListItemType.Conference)
+            {
+                if (_location == LocationType.Foreign)
+                {
+                    totalCost *= 0.7m;
+                }
+            }
+
             if (_wishListItemType == WishListItemType.Conference
                 || _wishListItemType == WishListItemType.Training
                 || _wishListItemType == WishListItemType.Exam)
             {
-                if (_nonMeritoricalCosts.IncludeAccommodationCost)
+                if (_sideCosts.IncludeAccommodationCost)
                 {
-                    totalCost += _nonMeritoricalCosts.AccommodationCost;
+                    totalCost += _sideCosts.AccommodationCost;
                 }
 
-                if (_nonMeritoricalCosts.IncludeDailyAllowanceCost)
+                if (_sideCosts.IncludeDailyAllowanceCost)
                 {
-                    totalCost += _nonMeritoricalCosts.DailyAllowanceCost;
+                    totalCost += _sideCosts.DailyAllowanceCost;
                 }
 
-                if (_nonMeritoricalCosts.IncludeTransportCost)
+                if (_sideCosts.IncludeTransportCost)
                 {
-                    totalCost += _nonMeritoricalCosts.TransportCost;
+                    totalCost += _sideCosts.TransportCost;
                 }
             }
 

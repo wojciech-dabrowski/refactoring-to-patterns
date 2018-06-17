@@ -1,6 +1,6 @@
 ﻿namespace RefactoringToPatterns.Strategy.Common
 {
-    public class NonMeritoricalCosts
+    public class SideCosts
     {
         public decimal AccommodationCost { get; set; }
         public decimal TransportCost { get; set; }
