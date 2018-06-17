@@ -1,11 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Step0\" />
+    <Folder Include="Step1\" />
+    <Folder Include="Step2\" />
+    <Folder Include="Step3\" />
+    <Folder Include="Step4\" />
   </ItemGroup>
 
 </Project>
