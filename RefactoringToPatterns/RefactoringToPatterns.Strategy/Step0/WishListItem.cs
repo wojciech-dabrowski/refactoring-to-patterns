@@ -6,31 +6,31 @@ namespace RefactoringToPatterns.Strategy.Step0
     public class WishListItem
     {
         private readonly int _approachNumber;
+        private readonly decimal _itemCost;
         private readonly NonMeritoricalCosts _nonMeritoricalCosts;
         private readonly string _vendorName;
         private readonly IDictionary<string, decimal> _vendorsWithDiscounts;
-        private readonly decimal _wishListItemCost;
         private readonly WishListItemType _wishListItemType;
 
         public WishListItem(
             WishListItemType wishListItemType,
-            int approachNumber,
-            decimal wishListItemCost,
+            decimal itemCost,
             string vendorName,
-            NonMeritoricalCosts nonMeritoricalCosts,
-            IDictionary<string, decimal> vendorsWithDiscounts)
+            int approachNumber = 0,
+            NonMeritoricalCosts nonMeritoricalCosts = null,
+            IDictionary<string, decimal> vendorNamesWithDiscounts = null)
         {
             _wishListItemType = wishListItemType;
             _approachNumber = approachNumber;
-            _wishListItemCost = wishListItemCost;
-            _nonMeritoricalCosts = nonMeritoricalCosts;
+            _itemCost = itemCost;
             _vendorName = vendorName;
-            _vendorsWithDiscounts = vendorsWithDiscounts;
+            _nonMeritoricalCosts = nonMeritoricalCosts ?? new NonMeritoricalCosts();
+            _vendorsWithDiscounts = vendorNamesWithDiscounts ?? new Dictionary<string, decimal>();
         }
 
         public decimal CalculateCost()
         {
-            var totalCost = _wishListItemCost;
+            var totalCost = _itemCost;
 
             if (_wishListItemType == WishListItemType.EducationMaterial
                 || _wishListItemType == WishListItemType.ELearningLicense)
@@ -48,15 +48,19 @@ namespace RefactoringToPatterns.Strategy.Step0
                 {
                     totalCost /= 2;
                 }
-
-                if (_approachNumber > 2)
+                else if (_approachNumber == 3)
+                {
+                    totalCost /= 4;
+                }
+                else if (_approachNumber > 3)
                 {
                     totalCost = 0;
                 }
             }
 
             if (_wishListItemType == WishListItemType.Conference
-                || _wishListItemType == WishListItemType.Training)
+                || _wishListItemType == WishListItemType.Training
+                || _wishListItemType == WishListItemType.Exam)
             {
                 if (_nonMeritoricalCosts.IncludeAccommodationCost)
                 {
