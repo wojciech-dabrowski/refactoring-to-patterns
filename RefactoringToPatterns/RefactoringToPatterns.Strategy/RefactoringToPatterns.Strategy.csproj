@@ -4,11 +4,4 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Step1\" />
-    <Folder Include="Step2\" />
-    <Folder Include="Step3\" />
-    <Folder Include="Step4\" />
-  </ItemGroup>
-
 </Project>
