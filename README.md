@@ -1,7 +1,7 @@
 # Refactoring to patterns
 Repository contains examples of refactoring existing code to design patterns. Every example is provided with tests and full list of steps for complete transition to the design pattern.
 
-### Refactoring to strategy pattern
+## Refactoring to strategy pattern
 Steps:
 1. Create _Strategy_ class. This class will contain behavior of considered method in original class. Name of strategy should correspond to the original class method behavior. Created class name can contain word `Strategy` if you think that will increase readability of code, but it is not necessary.
 2. Move considered method from original class to the new _Strategy_ class. During this step you should leave original method, but it will delegate behavior to the new class. To do this, define new member in original class. In this step, you should somehow pass needed data from original class to the _Strategy_ class. You can do it in two ways:
@@ -22,19 +22,40 @@ Steps:
 
    **Compile code and run tests.**
 
-### Refactoring to state pattern
+## Refactoring to template method pattern
 Steps:
-1. 
-2. 
-3. 
-4. 
+1. TODO
+2. TODO
+3. TODO
 
-### Refactoring to template method pattern
+   **Compile code and run tests.**
+
+4. TODO
+5. TODO
+
+   **Compile code and run tests.**
+
+## Refactoring to state pattern
 Steps:
-1. 
-2. 
-3. 
-4. 
+1. TODO
+
+   **Compile code.**
+
+2. TODO
+
+   **Compile code.**
+
+3. TODO
+
+   **Compile code and run tests.**
+
+4. TODO
+
+   **Compile code and run tests.**
+
+5. TODO
+
+   **Compile code and run tests.**
 
 #### Contribution
 Feel free to add new examples of existing patterns or propose refactors to other design pattern. Remember that you should provide tests, steps description in this file and full steps shown in code.
