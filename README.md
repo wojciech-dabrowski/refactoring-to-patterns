@@ -8,7 +8,7 @@ Steps:
    * Pass needed data as parameters.
    * Pass original class (context) to the _Strategy_ method.
 
-   **Compile code and run tests.**
+   Depending on chosen method, you could be forced to change access modifiers to some original class members.
 
 3. Introduce parameter to the constructor of _Strategy_ type or create _Strategy_ instance inside constructor.
 
@@ -17,6 +17,8 @@ Steps:
     * Inject appropriate _Strategy_ class in original class constructor.
     * Create appropriate _Strategy_ class in original class factory method.
     * Create appropriate _Strategy_ class in base _Strategy_ class factory method.
+
+    Base strategy class should be converted to interface or abstract class.
 
    **Compile code and run tests.**
 
