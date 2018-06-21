@@ -5,15 +5,18 @@ Repository contains examples of refactoring existing code to design patterns. Ev
 Steps:
 1. Create _Strategy_ class. This class will contain behavior of considered method in original class. Name of strategy should correspond to the original class method behavior. Created class name can contain word `Strategy` if you think that will increase readability of code, but it is not necessary.
 2. Move considered method from original class to the new _Strategy_ class. During this step you should leave original method, but it will delegate behavior to the new class. To do this, define new member in original class. In this step, you should somehow pass needed data from original class to the _Strategy_ class. You can do it in two ways:
-   1. Pass needed data as parameters.
-   2. Pass original class (context) to the _Strategy_ method.
+   * Pass needed data as parameters.
+   * Pass original class (context) to the _Strategy_ method.
 
    **Compile code and run tests.**
 
 3. Introduce parameter to the constructor of _Strategy_ type or create _Strategy_ instance inside constructor.
 
    **Compile code and run tests.**
-4. STEP FOUR TODO
+4. Create _Strategy_ subclass for every algorithm variant. Choose method of determine which algorithm should be used. You can do it in several ways:
+    * Inject appropriate _Strategy_ class in original class constructor.
+    * Create appropriate _Strategy_ class in original class factory method.
+    * Create appropriate _Strategy_ class in base _Strategy_ class factory method.
 
    **Compile code and run tests.**
 
