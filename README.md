@@ -24,14 +24,23 @@ Steps:
 
 ## Refactoring to template method pattern
 Steps:
-1. TODO
-2. TODO
-3. TODO
+1. Find _the similar_ method in multiple subclasses (method which executes similar steps). Extract _identical_ and _unique_ methods from _the similar_ method in subclasses. 
 
    **Compile code and run tests.**
 
-4. TODO
-5. TODO
+2. If _unique_ methods in subclasses have other signatures, unify them.
+
+   **Compile code and run tests.**
+
+3. If _similar_ methods in subclasses have other signatures, unify them.
+
+   **Compile code and run tests.**
+
+4. Pull up _identical_ methods to the base class.
+
+   **Compile code and run tests.**
+
+5. Pull up _similar_ method to the base class. Define _unique_ methods as abstract in the base class. _Similar_ method has become _template method_.
 
    **Compile code and run tests.**
 
