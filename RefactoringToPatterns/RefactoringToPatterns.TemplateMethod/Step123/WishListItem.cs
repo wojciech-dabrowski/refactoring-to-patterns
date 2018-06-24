@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RefactoringToPatterns.TemplateMethod.Common;
+using RefactoringToPatterns.TemplateMethod.Common.Enum;
 using RefactoringToPatterns.TemplateMethod.Step123.Strategy;
 
 namespace RefactoringToPatterns.TemplateMethod.Step123

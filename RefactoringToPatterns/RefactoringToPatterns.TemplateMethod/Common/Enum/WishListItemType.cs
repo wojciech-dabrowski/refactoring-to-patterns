@@ -1,4 +1,4 @@
-﻿namespace RefactoringToPatterns.Strategy.Common
+﻿namespace RefactoringToPatterns.TemplateMethod.Common.Enum
 {
     public enum WishListItemType
     {

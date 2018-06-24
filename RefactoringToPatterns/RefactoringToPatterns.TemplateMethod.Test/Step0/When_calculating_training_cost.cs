@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using RefactoringToPatterns.TemplateMethod.Common;
+using RefactoringToPatterns.TemplateMethod.Common.Enum;
 using RefactoringToPatterns.TemplateMethod.Step0;
 
 namespace RefactoringToPatterns.TemplateMethod.Test.Step0

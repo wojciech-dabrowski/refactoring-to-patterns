@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RefactoringToPatterns.Strategy.Common;
+using RefactoringToPatterns.Strategy.Common.Enum;
 using RefactoringToPatterns.Strategy.Step4.Strategy;
 
 namespace RefactoringToPatterns.Strategy.Step4

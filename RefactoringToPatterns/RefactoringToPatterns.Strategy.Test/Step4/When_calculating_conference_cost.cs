@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using RefactoringToPatterns.Strategy.Common;
+using RefactoringToPatterns.Strategy.Common.Enum;
 using RefactoringToPatterns.Strategy.Step4;
 
 namespace RefactoringToPatterns.Strategy.Test.Step4

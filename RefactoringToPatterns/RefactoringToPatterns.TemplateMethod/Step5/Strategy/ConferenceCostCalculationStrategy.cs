@@ -1,4 +1,4 @@
-﻿using RefactoringToPatterns.TemplateMethod.Common;
+﻿using RefactoringToPatterns.TemplateMethod.Common.Enum;
 
 namespace RefactoringToPatterns.TemplateMethod.Step5.Strategy
 {

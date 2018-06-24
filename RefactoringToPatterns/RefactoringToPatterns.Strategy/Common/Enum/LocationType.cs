@@ -1,4 +1,4 @@
-﻿namespace RefactoringToPatterns.TemplateMethod.Common
+﻿namespace RefactoringToPatterns.Strategy.Common.Enum
 {
     public enum LocationType
     {

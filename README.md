@@ -46,11 +46,11 @@ Steps:
 
 ## Refactoring to state pattern
 Steps:
-1. TODO
+1. _Context_ class is the class where you can find complex conditional state changes. Change field in _context_ class that describe her state (used for checking conditions and changed during changing state) into seperate class. This class will be _base state class_. Move defined constants (if they exist) to the _base state class_.
 
    **Compile code.**
 
-2. TODO
+2. Create _n_ state subclasses, where _n_ describes number of allowed states.  
 
    **Compile code.**
 
@@ -66,5 +66,5 @@ Steps:
 
    **Compile code and run tests.**
 
-#### Contribution
+## Contribution
 Feel free to add new examples of existing patterns or propose refactors to other design pattern. Remember that you should provide tests, steps description in this file and full steps shown in code.

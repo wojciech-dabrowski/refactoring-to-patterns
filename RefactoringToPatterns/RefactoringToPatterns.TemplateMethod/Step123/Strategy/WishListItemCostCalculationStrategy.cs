@@ -1,5 +1,5 @@
 ﻿using System;
-using RefactoringToPatterns.TemplateMethod.Common;
+using RefactoringToPatterns.TemplateMethod.Common.Enum;
 
 namespace RefactoringToPatterns.TemplateMethod.Step123.Strategy
 {
