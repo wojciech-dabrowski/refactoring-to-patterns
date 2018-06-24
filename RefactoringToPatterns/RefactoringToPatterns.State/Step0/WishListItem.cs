@@ -11,7 +11,6 @@ namespace RefactoringToPatterns.State.Step0
         private readonly bool _areCostsInvoiced;
         private readonly decimal _itemCost;
         private readonly User _owner;
-        private WishListItemStatus _status;
 
         public WishListItem(
             WishListItemStatus status,
@@ -20,20 +19,22 @@ namespace RefactoringToPatterns.State.Step0
             bool areCostsInvoiced = true)
         {
             _owner = owner;
-            _status = status;
+            Status = status;
             _itemCost = itemCost;
             _areCostsInvoiced = areCostsInvoiced;
         }
 
+        public WishListItemStatus Status { get; private set; }
+
         public void AcceptBy(User user)
         {
-            if (_status != WishListItemStatus.Requested &&
-                _status != WishListItemStatus.RequestedToDirector)
+            if (Status != WishListItemStatus.Requested &&
+                Status != WishListItemStatus.RequestedToDirector)
             {
-                throw new CannotAcceptWishListItemWithCurrentStatusException(_status);
+                throw new CannotAcceptWishListItemWithCurrentStatusException(Status);
             }
 
-            if (_status == WishListItemStatus.Requested)
+            if (Status == WishListItemStatus.Requested)
             {
                 if (!user.IsLeaderOf(_owner))
                 {
@@ -42,11 +43,11 @@ namespace RefactoringToPatterns.State.Step0
 
                 if (ShouldBeRequestedToDirector())
                 {
-                    _status = WishListItemStatus.RequestedToDirector;
+                    Status = WishListItemStatus.RequestedToDirector;
                 }
                 else
                 {
-                    _status = WishListItemStatus.Accepted;
+                    Status = WishListItemStatus.Accepted;
                 }
 
                 return;
@@ -57,25 +58,25 @@ namespace RefactoringToPatterns.State.Step0
                 throw new UserDoesNotHavePermissionToAcceptRequestedWishListItemException();
             }
 
-            _status = WishListItemStatus.Accepted;
+            Status = WishListItemStatus.Accepted;
         }
 
         public void RejectBy(User user)
         {
-            if (_status != WishListItemStatus.Requested &&
-                _status != WishListItemStatus.RequestedToDirector)
+            if (Status != WishListItemStatus.Requested &&
+                Status != WishListItemStatus.RequestedToDirector)
             {
-                throw new CannotRejectWishListItemWithCurrentStatusException(_status);
+                throw new CannotRejectWishListItemWithCurrentStatusException(Status);
             }
 
-            if (_status == WishListItemStatus.Requested)
+            if (Status == WishListItemStatus.Requested)
             {
                 if (!user.IsLeaderOf(_owner))
                 {
                     throw new UserDoesNotHavePermissionToRejectRequestedWishListItemException();
                 }
 
-                _status = WishListItemStatus.Rejected;
+                Status = WishListItemStatus.Rejected;
 
                 return;
             }
@@ -85,14 +86,14 @@ namespace RefactoringToPatterns.State.Step0
                 throw new UserDoesNotHavePermissionToRejectRequestedWishListItemException();
             }
 
-            _status = WishListItemStatus.Rejected;
+            Status = WishListItemStatus.Rejected;
         }
 
         public void StartRealizationBy(User user)
         {
-            if (_status != WishListItemStatus.Accepted)
+            if (Status != WishListItemStatus.Accepted)
             {
-                throw new CannotStartWishListItemRealizationWithCurrentStatusException(_status);
+                throw new CannotStartWishListItemRealizationWithCurrentStatusException(Status);
             }
 
             if (!user.IsSupervisor)
@@ -100,14 +101,14 @@ namespace RefactoringToPatterns.State.Step0
                 throw new UserDoesNotHavePermissionToStartWishListItemRealizationException();
             }
 
-            _status = WishListItemStatus.InRealization;
+            Status = WishListItemStatus.InRealization;
         }
 
         public void FinishRealizationBy(User user)
         {
-            if (_status != WishListItemStatus.InRealization)
+            if (Status != WishListItemStatus.InRealization)
             {
-                throw new CannotFinishWishListItemRealizationWithCurrentStatusException(_status);
+                throw new CannotFinishWishListItemRealizationWithCurrentStatusException(Status);
             }
 
             if (!user.IsSupervisor)
@@ -120,7 +121,7 @@ namespace RefactoringToPatterns.State.Step0
                 throw new CannotFinishWishListItemRealizationWithNotInvoicedException();
             }
 
-            _status = WishListItemStatus.Realized;
+            Status = WishListItemStatus.Realized;
         }
 
         private bool ShouldBeRequestedToDirector()

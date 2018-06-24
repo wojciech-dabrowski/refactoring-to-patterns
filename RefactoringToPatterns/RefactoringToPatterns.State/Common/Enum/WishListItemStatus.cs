@@ -2,12 +2,11 @@
 {
     public enum WishListItemStatus
     {
-        Requested,
+        Requested = 1,
         RequestedToDirector,
         Rejected,
         Accepted,
         InRealization,
-        UserActionRequired,
         Realized
     }
 }

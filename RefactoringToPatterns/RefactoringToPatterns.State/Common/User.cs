@@ -7,8 +7,8 @@ namespace RefactoringToPatterns.State.Common
         public User(
             Guid id,
             string fullName,
-            CompanyStructureUnit department,
-            User leader,
+            User leader = null,
+            Department department = null,
             bool isSupervisor = false)
         {
             Id = id;
@@ -20,7 +20,7 @@ namespace RefactoringToPatterns.State.Common
 
         public Guid Id { get; }
         public string FullName { get; }
-        public CompanyStructureUnit Department { get; }
+        public Department Department { get; }
         public User Leader { get; }
         public bool IsSupervisor { get; }
 
@@ -41,12 +41,12 @@ namespace RefactoringToPatterns.State.Common
 
         public bool IsLeaderOf(User user)
         {
-            return user.Department.Director.Equals(this);
+            return user.Leader.Equals(this);
         }
 
         public bool IsDirectorOf(User user)
         {
-            return user.Leader.Equals(this);
+            return user.Department.Director.Equals(this);
         }
 
         public override bool Equals(object obj)

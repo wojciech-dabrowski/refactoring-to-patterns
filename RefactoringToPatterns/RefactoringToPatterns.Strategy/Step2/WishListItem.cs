@@ -7,7 +7,9 @@ namespace RefactoringToPatterns.Strategy.Step2
 {
     public class WishListItem
     {
+#pragma warning disable 649
         private readonly WishListItemCostCalculationStrategy _calculationStrategy;
+#pragma warning restore 649
 
         public WishListItem(
             WishListItemType wishListItemType,
