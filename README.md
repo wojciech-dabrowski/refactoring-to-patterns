@@ -48,11 +48,11 @@ Steps:
 Steps:
 1. _Context_ class is the class where you can find complex conditional state changes. Change field in _context_ class that describe her state (used for checking conditions and changed during changing state) into seperate class. This class will be _base state class_. Move defined constants (if they exist) to the _base state class_.
 
-   **Compile code.**
+   **Compile code and run tests.**
 
-2. Create _n_ state subclasses, where _n_ describes number of allowed states.  
+2. Create _n_ state subclasses, where _n_ describes number of allowed states.  TODO
 
-   **Compile code.**
+   **Compile code and run tests.**
 
 3. TODO
 
