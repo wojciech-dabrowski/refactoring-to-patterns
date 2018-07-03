@@ -4,9 +4,9 @@ using RefactoringToPatterns.TemplateMethod.Common.Enum;
 
 namespace RefactoringToPatterns.TemplateMethod.Step5.Strategy
 {
-    public abstract class WishListItemCostCalculationStrategy
+    internal abstract class WishListItemCostCalculationStrategy
     {
-        public decimal CalculateCost(WishListItem item)
+        internal decimal CalculateCost(WishListItem item)
         {
             var totalCost = item.ItemCost;
 
@@ -40,7 +40,7 @@ namespace RefactoringToPatterns.TemplateMethod.Step5.Strategy
             return totalSideCosts;
         }
 
-        public static WishListItemCostCalculationStrategy CreateStrategy(WishListItemType itemType)
+        internal static WishListItemCostCalculationStrategy CreateStrategy(WishListItemType itemType)
         {
             switch (itemType)
             {
