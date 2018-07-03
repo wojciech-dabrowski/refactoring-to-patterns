@@ -6,7 +6,7 @@ namespace RefactoringToPatterns.Strategy.Step4.Strategy
     {
         public override decimal CalculateCost(WishListItem item)
         {
-            var totalCost = item.ItemCost;
+            var totalCost = item.BaseItemCost;
 
             if (item.Location == LocationType.Foreign)
             {

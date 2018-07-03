@@ -4,7 +4,7 @@
     {
         public override decimal CalculateCost(WishListItem item)
         {
-            var totalCost = item.ItemCost;
+            var totalCost = item.BaseItemCost;
 
             if (item.VendorsWithDiscounts.ContainsKey(item.VendorName))
             {

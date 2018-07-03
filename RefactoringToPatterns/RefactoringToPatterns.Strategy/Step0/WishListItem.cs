@@ -9,7 +9,7 @@ namespace RefactoringToPatterns.Strategy.Step0
     {
         private readonly int _approachNumber;
         private readonly DateTime? _endDate;
-        private readonly decimal _itemCost;
+        private readonly decimal _baseItemCost;
         private readonly LocationType _location;
         private readonly SideCosts _sideCosts;
         private readonly DateTime? _startDate;
@@ -19,7 +19,7 @@ namespace RefactoringToPatterns.Strategy.Step0
 
         public WishListItem(
             WishListItemType wishListItemType,
-            decimal itemCost,
+            decimal baseItemCost,
             string vendorName = null,
             LocationType location = LocationType.Local,
             int approachNumber = 0,
@@ -29,7 +29,7 @@ namespace RefactoringToPatterns.Strategy.Step0
             IDictionary<string, decimal> vendorNamesWithDiscounts = null)
         {
             _wishListItemType = wishListItemType;
-            _itemCost = itemCost;
+            _baseItemCost = baseItemCost;
             _vendorName = vendorName;
             _location = location;
             _approachNumber = approachNumber;
@@ -41,7 +41,7 @@ namespace RefactoringToPatterns.Strategy.Step0
 
         public decimal CalculateCost()
         {
-            var totalCost = _itemCost;
+            var totalCost = _baseItemCost;
 
             if (_wishListItemType == WishListItemType.EducationMaterial
                 || _wishListItemType == WishListItemType.ELearningLicense)

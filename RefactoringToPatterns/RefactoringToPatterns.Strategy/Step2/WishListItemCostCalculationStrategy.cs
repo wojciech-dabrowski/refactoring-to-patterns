@@ -6,7 +6,7 @@ namespace RefactoringToPatterns.Strategy.Step2
     {
         public decimal CalculateCost(WishListItem item)
         {
-            var totalCost = item.ItemCost;
+            var totalCost = item.BaseItemCost;
 
             if (item.WishListItemType == WishListItemType.EducationMaterial
                 || item.WishListItemType == WishListItemType.ELearningLicense)

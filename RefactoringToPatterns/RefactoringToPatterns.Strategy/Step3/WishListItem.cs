@@ -11,7 +11,7 @@ namespace RefactoringToPatterns.Strategy.Step3
 
         public WishListItem(
             WishListItemType wishListItemType,
-            decimal itemCost,
+            decimal baseItemCost,
             string vendorName = null,
             LocationType location = LocationType.Local,
             int approachNumber = 0,
@@ -21,7 +21,7 @@ namespace RefactoringToPatterns.Strategy.Step3
             IDictionary<string, decimal> vendorNamesWithDiscounts = null)
         {
             WishListItemType = wishListItemType;
-            ItemCost = itemCost;
+            BaseItemCost = baseItemCost;
             VendorName = vendorName;
             Location = location;
             ApproachNumber = approachNumber;
@@ -35,7 +35,7 @@ namespace RefactoringToPatterns.Strategy.Step3
 
         public int ApproachNumber { get; }
         public DateTime? EndDate { get; }
-        public decimal ItemCost { get; }
+        public decimal BaseItemCost { get; }
         public LocationType Location { get; }
         public SideCosts SideCosts { get; }
         public DateTime? StartDate { get; }
