@@ -2,7 +2,7 @@
 {
     internal class TrainingCostCalculationStrategy : WishListItemCostCalculationStrategy
     {
-        public override decimal CalculateCost(WishListItem item)
+        internal override decimal CalculateCost(WishListItem item)
         {
             var totalCost = item.BaseItemCost;
 

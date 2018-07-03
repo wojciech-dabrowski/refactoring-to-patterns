@@ -3,11 +3,11 @@ using RefactoringToPatterns.Strategy.Common.Enum;
 
 namespace RefactoringToPatterns.Strategy.Step4.Strategy
 {
-    public abstract class WishListItemCostCalculationStrategy
+    internal abstract class WishListItemCostCalculationStrategy
     {
-        public abstract decimal CalculateCost(WishListItem item);
+        internal abstract decimal CalculateCost(WishListItem item);
 
-        public static WishListItemCostCalculationStrategy CreateStrategy(WishListItemType itemType)
+        internal static WishListItemCostCalculationStrategy CreateStrategy(WishListItemType itemType)
         {
             switch (itemType)
             {

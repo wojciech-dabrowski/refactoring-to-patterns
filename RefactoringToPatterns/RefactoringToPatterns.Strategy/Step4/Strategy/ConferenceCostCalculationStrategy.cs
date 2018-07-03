@@ -4,7 +4,7 @@ namespace RefactoringToPatterns.Strategy.Step4.Strategy
 {
     internal class ConferenceCostCalculationStrategy : WishListItemCostCalculationStrategy
     {
-        public override decimal CalculateCost(WishListItem item)
+        internal override decimal CalculateCost(WishListItem item)
         {
             var totalCost = item.BaseItemCost;
 

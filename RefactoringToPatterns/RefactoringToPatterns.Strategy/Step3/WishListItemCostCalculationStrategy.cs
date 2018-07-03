@@ -2,9 +2,9 @@
 
 namespace RefactoringToPatterns.Strategy.Step3
 {
-    public class WishListItemCostCalculationStrategy
+    internal class WishListItemCostCalculationStrategy
     {
-        public decimal CalculateCost(WishListItem item)
+        internal decimal CalculateCost(WishListItem item)
         {
             var totalCost = item.BaseItemCost;
 
