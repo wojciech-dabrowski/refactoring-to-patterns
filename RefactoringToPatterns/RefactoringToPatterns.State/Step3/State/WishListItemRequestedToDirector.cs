@@ -2,8 +2,8 @@
 
 namespace RefactoringToPatterns.State.Step3.State
 {
-    public class WishListItemRequestedToDirector : WishListItemState
+    internal class WishListItemRequestedToDirector : WishListItemState
     {
-        public override WishListItemStatus Status => WishListItemStatus.RequestedToDirector;
+        internal override WishListItemStatus Status => WishListItemStatus.RequestedToDirector;
     }
 }

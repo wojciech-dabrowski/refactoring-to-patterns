@@ -3,24 +3,24 @@ using RefactoringToPatterns.State.Common.Enum;
 
 namespace RefactoringToPatterns.State.Step1.State
 {
-    public class WishListItemState
+    internal class WishListItemState
     {
-        public static WishListItemState Requested =
+        internal static WishListItemState Requested =
             new WishListItemState(WishListItemStatus.Requested);
 
-        public static WishListItemState RequestedToDirector =
+        internal static WishListItemState RequestedToDirector =
             new WishListItemState(WishListItemStatus.RequestedToDirector);
 
-        public static WishListItemState Rejected =
+        internal static WishListItemState Rejected =
             new WishListItemState(WishListItemStatus.Rejected);
 
-        public static WishListItemState Accepted =
+        internal static WishListItemState Accepted =
             new WishListItemState(WishListItemStatus.Accepted);
 
-        public static WishListItemState InRealization =
+        internal static WishListItemState InRealization =
             new WishListItemState(WishListItemStatus.InRealization);
 
-        public static WishListItemState Realized =
+        internal static WishListItemState Realized =
             new WishListItemState(WishListItemStatus.Realized);
 
         private WishListItemState(
@@ -29,9 +29,9 @@ namespace RefactoringToPatterns.State.Step1.State
             Status = status;
         }
 
-        public WishListItemStatus Status { get; }
+        internal WishListItemStatus Status { get; }
 
-        public static WishListItemState CreateState(WishListItemStatus status)
+        internal static WishListItemState CreateState(WishListItemStatus status)
         {
             switch (status)
             {

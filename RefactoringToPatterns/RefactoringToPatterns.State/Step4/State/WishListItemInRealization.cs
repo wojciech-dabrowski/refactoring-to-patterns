@@ -5,11 +5,11 @@ using RefactoringToPatterns.State.Common.Exceptions.Status;
 
 namespace RefactoringToPatterns.State.Step4.State
 {
-    public class WishListItemInRealization : WishListItemState
+    internal class WishListItemInRealization : WishListItemState
     {
-        public override WishListItemStatus Status => WishListItemStatus.InRealization;
+        internal override WishListItemStatus Status => WishListItemStatus.InRealization;
 
-        public void FinishRealizationBy(User user, WishListItem item)
+        internal void FinishRealizationBy(User user, WishListItem item)
         {
             if (!user.IsSupervisor)
             {

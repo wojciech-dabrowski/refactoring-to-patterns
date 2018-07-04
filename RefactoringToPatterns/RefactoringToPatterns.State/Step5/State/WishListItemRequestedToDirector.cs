@@ -4,11 +4,11 @@ using RefactoringToPatterns.State.Common.Exceptions.Permission;
 
 namespace RefactoringToPatterns.State.Step5.State
 {
-    public class WishListItemRequestedToDirector : WishListItemState
+    internal class WishListItemRequestedToDirector : WishListItemState
     {
-        public override WishListItemStatus Status => WishListItemStatus.RequestedToDirector;
+        internal override WishListItemStatus Status => WishListItemStatus.RequestedToDirector;
 
-        public override void AcceptBy(User user, WishListItem item)
+        internal override void AcceptBy(User user, WishListItem item)
         {
             if (!user.IsDirectorOf(item.Owner))
             {
@@ -18,7 +18,7 @@ namespace RefactoringToPatterns.State.Step5.State
             item.State = Accepted;
         }
 
-        public override void RejectBy(User user, WishListItem item)
+        internal override void RejectBy(User user, WishListItem item)
         {
             if (!user.IsDirectorOf(item.Owner))
             {

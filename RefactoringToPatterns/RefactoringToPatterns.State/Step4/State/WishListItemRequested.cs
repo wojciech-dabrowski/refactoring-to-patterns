@@ -4,13 +4,13 @@ using RefactoringToPatterns.State.Common.Exceptions.Permission;
 
 namespace RefactoringToPatterns.State.Step4.State
 {
-    public class WishListItemRequested : WishListItemState
+    internal class WishListItemRequested : WishListItemState
     {
         private const decimal AdditionalAcceptanceCostAmount = 5000;
 
-        public override WishListItemStatus Status => WishListItemStatus.Requested;
+        internal override WishListItemStatus Status => WishListItemStatus.Requested;
 
-        public void AcceptBy(User user, WishListItem item)
+        internal void AcceptBy(User user, WishListItem item)
         {
             if (!user.IsLeaderOf(item.Owner))
             {
@@ -27,7 +27,7 @@ namespace RefactoringToPatterns.State.Step4.State
             }
         }
 
-        public void RejectBy(User user, WishListItem item)
+        internal void RejectBy(User user, WishListItem item)
         {
             if (!user.IsLeaderOf(item.Owner))
             {

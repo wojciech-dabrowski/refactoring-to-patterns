@@ -2,8 +2,8 @@
 
 namespace RefactoringToPatterns.State.Step2.State
 {
-    public class WishListItemInRealization : WishListItemState
+    internal class WishListItemInRealization : WishListItemState
     {
-        public override WishListItemStatus Status => WishListItemStatus.InRealization;
+        internal override WishListItemStatus Status => WishListItemStatus.InRealization;
     }
 }

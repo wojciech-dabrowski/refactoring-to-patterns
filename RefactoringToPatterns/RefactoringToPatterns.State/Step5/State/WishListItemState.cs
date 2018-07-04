@@ -5,29 +5,29 @@ using RefactoringToPatterns.State.Common.Exceptions.Status;
 
 namespace RefactoringToPatterns.State.Step5.State
 {
-    public abstract class WishListItemState
+    internal abstract class WishListItemState
     {
-        public static WishListItemState Requested =
+        internal static WishListItemState Requested =
             new WishListItemRequested();
 
-        public static WishListItemState RequestedToDirector =
+        internal static WishListItemState RequestedToDirector =
             new WishListItemRequestedToDirector();
 
-        public static WishListItemState Rejected =
+        internal static WishListItemState Rejected =
             new WishListItemRejected();
 
-        public static WishListItemState Accepted =
+        internal static WishListItemState Accepted =
             new WishListItemAccepted();
 
-        public static WishListItemState InRealization =
+        internal static WishListItemState InRealization =
             new WishListItemInRealization();
 
-        public static WishListItemState Realized =
+        internal static WishListItemState Realized =
             new WishListItemRealized();
 
-        public abstract WishListItemStatus Status { get; }
+        internal abstract WishListItemStatus Status { get; }
 
-        public static WishListItemState CreateState(WishListItemStatus status)
+        internal static WishListItemState CreateState(WishListItemStatus status)
         {
             switch (status)
             {
@@ -48,22 +48,22 @@ namespace RefactoringToPatterns.State.Step5.State
             }
         }
 
-        public virtual void AcceptBy(User user, WishListItem item)
+        internal virtual void AcceptBy(User user, WishListItem item)
         {
             throw new CannotAcceptWishListItemWithCurrentStatusException(Status);
         }
 
-        public virtual void RejectBy(User user, WishListItem item)
+        internal virtual void RejectBy(User user, WishListItem item)
         {
             throw new CannotRejectWishListItemWithCurrentStatusException(Status);
         }
 
-        public virtual void StartRealizationBy(User user, WishListItem item)
+        internal virtual void StartRealizationBy(User user, WishListItem item)
         {
             throw new CannotStartWishListItemRealizationWithCurrentStatusException(Status);
         }
 
-        public virtual void FinishRealizationBy(User user, WishListItem item)
+        internal virtual void FinishRealizationBy(User user, WishListItem item)
         {
             throw new CannotFinishWishListItemRealizationWithCurrentStatusException(Status);
         }

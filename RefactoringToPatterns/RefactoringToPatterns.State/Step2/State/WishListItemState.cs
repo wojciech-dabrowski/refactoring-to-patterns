@@ -3,29 +3,29 @@ using RefactoringToPatterns.State.Common.Enum;
 
 namespace RefactoringToPatterns.State.Step2.State
 {
-    public abstract class WishListItemState
+    internal abstract class WishListItemState
     {
-        public static WishListItemState Requested =
+        internal static WishListItemState Requested =
             new WishListItemRequested();
 
-        public static WishListItemState RequestedToDirector =
+        internal static WishListItemState RequestedToDirector =
             new WishListItemRequestedToDirector();
 
-        public static WishListItemState Rejected =
+        internal static WishListItemState Rejected =
             new WishListItemRejected();
 
-        public static WishListItemState Accepted =
+        internal static WishListItemState Accepted =
             new WishListItemAccepted();
 
-        public static WishListItemState InRealization =
+        internal static WishListItemState InRealization =
             new WishListItemInRealization();
 
-        public static WishListItemState Realized =
+        internal static WishListItemState Realized =
             new WishListItemRealized();
 
-        public abstract WishListItemStatus Status { get; }
+        internal abstract WishListItemStatus Status { get; }
 
-        public static WishListItemState CreateState(WishListItemStatus status)
+        internal static WishListItemState CreateState(WishListItemStatus status)
         {
             switch (status)
             {

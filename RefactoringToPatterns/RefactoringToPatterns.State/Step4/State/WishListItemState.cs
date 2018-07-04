@@ -6,31 +6,31 @@ using RefactoringToPatterns.State.Common.Exceptions.Status;
 
 namespace RefactoringToPatterns.State.Step4.State
 {
-    public abstract class WishListItemState
+    internal abstract class WishListItemState
     {
         private const decimal AdditionalAcceptanceCostAmount = 5000;
 
-        public static WishListItemState Requested =
+        internal static WishListItemState Requested =
             new WishListItemRequested();
 
-        public static WishListItemState RequestedToDirector =
+        internal static WishListItemState RequestedToDirector =
             new WishListItemRequestedToDirector();
 
-        public static WishListItemState Rejected =
+        internal static WishListItemState Rejected =
             new WishListItemRejected();
 
-        public static WishListItemState Accepted =
+        internal static WishListItemState Accepted =
             new WishListItemAccepted();
 
-        public static WishListItemState InRealization =
+        internal static WishListItemState InRealization =
             new WishListItemInRealization();
 
-        public static WishListItemState Realized =
+        internal static WishListItemState Realized =
             new WishListItemRealized();
 
-        public abstract WishListItemStatus Status { get; }
+        internal abstract WishListItemStatus Status { get; }
 
-        public static WishListItemState CreateState(WishListItemStatus status)
+        internal static WishListItemState CreateState(WishListItemStatus status)
         {
             switch (status)
             {
@@ -51,7 +51,7 @@ namespace RefactoringToPatterns.State.Step4.State
             }
         }
 
-        public void AcceptBy(User user, WishListItem item)
+        internal void AcceptBy(User user, WishListItem item)
         {
             if (Status != WishListItemStatus.Requested &&
                 Status != WishListItemStatus.RequestedToDirector)
@@ -86,7 +86,7 @@ namespace RefactoringToPatterns.State.Step4.State
             item.State = Accepted;
         }
 
-        public void RejectBy(User user, WishListItem item)
+        internal void RejectBy(User user, WishListItem item)
         {
             if (Status != WishListItemStatus.Requested &&
                 Status != WishListItemStatus.RequestedToDirector)
@@ -114,7 +114,7 @@ namespace RefactoringToPatterns.State.Step4.State
             item.State = Rejected;
         }
 
-        public void StartRealizationBy(User user, WishListItem item)
+        internal void StartRealizationBy(User user, WishListItem item)
         {
             if (Status != WishListItemStatus.Accepted)
             {
@@ -129,7 +129,7 @@ namespace RefactoringToPatterns.State.Step4.State
             item.State = InRealization;
         }
 
-        public void FinishRealizationBy(User user, WishListItem item)
+        internal void FinishRealizationBy(User user, WishListItem item)
         {
             if (Status != WishListItemStatus.InRealization)
             {
