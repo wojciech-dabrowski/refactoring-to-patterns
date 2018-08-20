@@ -8,8 +8,7 @@ namespace RefactoringToPatterns.Strategy.Step2
         {
             var totalCost = item.BaseItemCost;
 
-            if (item.WishListItemType == WishListItemType.EducationMaterial
-                || item.WishListItemType == WishListItemType.ELearningLicense)
+            if (item.WishListItemType == WishListItemType.EducationMaterial)
             {
                 if (item.VendorsWithDiscounts.ContainsKey(item.VendorName))
                 {

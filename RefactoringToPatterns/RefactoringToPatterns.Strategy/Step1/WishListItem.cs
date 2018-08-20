@@ -43,8 +43,7 @@ namespace RefactoringToPatterns.Strategy.Step1
         {
             var totalCost = _baseItemCost;
 
-            if (_wishListItemType == WishListItemType.EducationMaterial
-                || _wishListItemType == WishListItemType.ELearningLicense)
+            if (_wishListItemType == WishListItemType.EducationMaterial)
             {
                 if (_vendorsWithDiscounts.ContainsKey(_vendorName))
                 {

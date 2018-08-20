@@ -13,12 +13,6 @@
 
         private decimal ModifyCostBySpecificRules(WishListItem item, decimal totalCost)
         {
-            if (item.VendorsWithDiscounts.ContainsKey(item.VendorName))
-            {
-                var discountAmount = totalCost * item.VendorsWithDiscounts[item.VendorName];
-                totalCost -= discountAmount;
-            }
-
             var duration = item.EndDate - item.StartDate;
 
             if (duration.HasValue && duration.Value.Days > 180)
