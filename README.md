@@ -1,6 +1,28 @@
 # Refactoring to patterns
 Repository contains examples of refactoring existing code to design patterns. Every example is provided with tests and full list of steps for complete transition to the design pattern.
 
+## Refactoring to state pattern
+Steps:
+1. _Context_ class is the class where you can find complex conditional state changes. Change field in _context_ class that describe her state (used for checking conditions and changed during changing state) into seperate class. This class will be _base state class_. Move defined constants (if they exist) to the _base state class_. Every state has assigned separate instance of this class.
+
+   **Compile code and run tests.**
+
+2. Create _n_ state subclasses, where _n_ describes number of allowed states. Every state is now described as appropriate class. _Base state class_ can be declared as abstract after that operation.
+ 
+   **Compile code and run tests.**
+
+3. Move every method changing internal state to the _Base state class_ class.
+
+   **Compile code and run tests.**
+
+4. Copy logic of changing state to the concrete State class - a subclass of _Base state class_.
+
+   **Compile code and run tests.**
+
+5. Remove logic of changing state from the _Base state class_.
+
+   **Compile code and run tests.**
+
 ## Refactoring to strategy pattern
 Steps:
 1. Create _Strategy_ class. This class will contain behavior of considered method in original class. Name of strategy should correspond to the original class method behavior. Created class name can contain word `Strategy` if you think that will increase readability of code, but it is not necessary.
@@ -10,9 +32,12 @@ Steps:
 
    Depending on chosen method, you could be forced to change access modifiers to some original class members.
 
+    **Compile code.**
+
 3. Introduce parameter to the constructor of _Strategy_ type or create _Strategy_ instance inside constructor.
 
    **Compile code and run tests.**
+
 4. Create _Strategy_ subclass for every algorithm variant. Choose method of determine which algorithm should be used. You can do it in several ways:
     * Inject appropriate _Strategy_ class in original class constructor.
     * Create appropriate _Strategy_ class in original class factory method.
@@ -41,28 +66,6 @@ Steps:
    **Compile code and run tests.**
 
 5. Pull up _similar_ method to the base class. Define _unique_ methods as abstract in the base class. _Similar_ method has become _template method_.
-
-   **Compile code and run tests.**
-
-## Refactoring to state pattern
-Steps:
-1. _Context_ class is the class where you can find complex conditional state changes. Change field in _context_ class that describe her state (used for checking conditions and changed during changing state) into seperate class. This class will be _base state class_. Move defined constants (if they exist) to the _base state class_. Every state has assigned separate instance of this class.
-
-   **Compile code and run tests.**
-
-2. Create _n_ state subclasses, where _n_ describes number of allowed states. Every state is now described as appropriate class. _Base state class_ can be declared as abstract after that operation.
- 
-   **Compile code and run tests.**
-
-3. TODO
-
-   **Compile code and run tests.**
-
-4. TODO
-
-   **Compile code and run tests.**
-
-5. TODO
 
    **Compile code and run tests.**
 
