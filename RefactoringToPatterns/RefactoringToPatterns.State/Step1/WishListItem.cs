@@ -30,13 +30,13 @@ namespace RefactoringToPatterns.State.Step1
 
         public void AcceptBy(User user)
         {
-            if (State.Status != WishListItemStatus.Requested &&
-                State.Status != WishListItemStatus.RequestedToDirector)
+            if (Status != WishListItemStatus.Requested &&
+                Status != WishListItemStatus.RequestedToDirector)
             {
-                throw new CannotAcceptWishListItemWithCurrentStatusException(State.Status);
+                throw new CannotAcceptWishListItemWithCurrentStatusException(Status);
             }
 
-            if (State.Status == WishListItemStatus.Requested)
+            if (Status == WishListItemStatus.Requested)
             {
                 if (!user.IsLeaderOf(_owner))
                 {
@@ -65,13 +65,13 @@ namespace RefactoringToPatterns.State.Step1
 
         public void RejectBy(User user)
         {
-            if (State.Status != WishListItemStatus.Requested &&
-                State.Status != WishListItemStatus.RequestedToDirector)
+            if (Status != WishListItemStatus.Requested &&
+                Status != WishListItemStatus.RequestedToDirector)
             {
-                throw new CannotRejectWishListItemWithCurrentStatusException(State.Status);
+                throw new CannotRejectWishListItemWithCurrentStatusException(Status);
             }
 
-            if (State.Status == WishListItemStatus.Requested)
+            if (Status == WishListItemStatus.Requested)
             {
                 if (!user.IsLeaderOf(_owner))
                 {
@@ -93,9 +93,9 @@ namespace RefactoringToPatterns.State.Step1
 
         public void StartRealizationBy(User user)
         {
-            if (State.Status != WishListItemStatus.Accepted)
+            if (Status != WishListItemStatus.Accepted)
             {
-                throw new CannotStartWishListItemRealizationWithCurrentStatusException(State.Status);
+                throw new CannotStartWishListItemRealizationWithCurrentStatusException(Status);
             }
 
             if (!user.IsSupervisor)
@@ -108,9 +108,9 @@ namespace RefactoringToPatterns.State.Step1
 
         public void FinishRealizationBy(User user)
         {
-            if (State.Status != WishListItemStatus.InRealization)
+            if (Status != WishListItemStatus.InRealization)
             {
-                throw new CannotFinishWishListItemRealizationWithCurrentStatusException(State.Status);
+                throw new CannotFinishWishListItemRealizationWithCurrentStatusException(Status);
             }
 
             if (!user.IsSupervisor)
